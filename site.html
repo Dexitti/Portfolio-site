@@ -6,13 +6,13 @@
     <title>Dexitti</title>
     <link rel="icon" href="resources/Logo.svg" type="image/svg+xml">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Gagalin&family=Montserrat:wght@400;500;600;700&family=Gadugi:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Шапка -->
-    <div class="container">
+    <header class="container">
         <div class="row">
             <div class="col col-lg-4 col-4 ">
                 <img src="resources/Logo.svg" class="img-fluid" alt="Dexitti logo" width="52" height="52">
@@ -45,10 +45,10 @@
                 </button>
             </div>
         </div>
-    </div>
-
+    </header>
+    
     <!-- Главный экран -->
-    <div id="home" class="container" style="margin-bottom: 10px;">
+    <main id="home" class="container">
         <div class="row">
             <div class="col order-1 d-lg-none">
                 <h1 class="hero-title">Hi, Hello, Дарова, 🤘, Привет!</h1>
@@ -81,16 +81,16 @@
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
-    </div>
-    
+    </main>
+
     <div class="container">
         <!-- Творчество -->
-        <section id="art" class="row creativity">
+        <section id="art" class="row">
             <h1 class="section-title col-12">Творчество</h1>
-            <div class="art-categories">
-                <div class="category-circle active col-12" data-category="drawing">
+            <div class="art-categories col-12">
+                <article class="row category-circle active" data-category="drawing">
                     <div class="col-lg-5">
-                        <img src="" alt="Рисунки">
+                        <img src="resources/Рисунки/1760180854003.jpg" class="img-fluid" alt="Рисунки">
                     </div>
                     <div class="col-lg-7">
                         <h2>Рисование</h2>
@@ -98,8 +98,8 @@
                             Это фундамент моего творчества, сочетающий в себе всё от академической живописи до цифрового рисунка. Создаю как быстрые скетчи, так и детализированные произведения.
                         </p>
                     </div>
-                </div>
-                <div class="category-circle col-12" data-category="drawing">
+                </article>
+                <article class="row category-circle" data-category="drawing">
                     <div class="col-lg-7">
                         <h2>Дизайн</h2>
                         <p>
@@ -107,12 +107,12 @@
                         </p>
                     </div>
                     <div class="col-lg-5">
-                        <img src="" alt="Композиции">
+                        <img src="resources/Дизайн/1 Космос.svg" class="img-fluid" alt="Композиции">
                     </div>
-                </div>
-                <div class="category-circle active col-12" data-category="drawing">
+                </article>
+                <article class="row category-circle active" data-category="drawing">
                     <div class="col-lg-5">
-                        <img src="" alt="Модели">
+                        <img src="resources/Моделирование/Рейлджек превью.png" class="img-fluid" alt="Модели">
                     </div>
                     <div class="col-lg-7">
                         <h2>Моделирование</h2>
@@ -120,89 +120,123 @@
                             Я человек с отличным трехмерным видением, что позволяет воплотить любую идею через полигональное и параметрическое моделирование.
                         </p>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
         <!-- Проекты -->
-        <section id="projects" class="row projects">
-            <h1 class="section-title">Проекты</h1>
-            <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-1">
-                <!-- ТГ канал -->
-                <div class="col">
-                    <div class="project-card">
-                        <div class="card-border">
-                            <div class="card-content">
-                                <div class="card-header">
-                                    <h3>ТГ-канал</h3>
-                                </div>
-                                <p class="card-description">Авторский канал о творчестве, играх и современной культуре с эксклюзивным контентом</p>
-                                <div class="card-preview">
-                                    <img src="https://via.placeholder.com/400x250/6366f1/ffffff?text=Telegram+Channel" alt="ТГ канал">
-                                </div>
+        <section id="projects" class="row">
+            <h1 class="section-title col-12">Проекты</h1>
+            <div class="projects col-12">
+                <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-1">
+                    <div class="col project-card">
+                        <div class="card-content">
+                            <div class="row card-header">
+                                <h3>Telegram</h3>
+                            </div>
+                            <p class="card-description">Блог-канал о всяких интересностях</p>
+                            <div class="card-preview">
+                                <img src="resources/Превью проектов/TG Channel.png" class="img-fluid" alt="ТГ канал">
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="col project-card">
+                        <div class="card-content">
+                            <div class="row card-header">
+                                <h3>Список игр и фильмов</h3>
+                            </div>
+                            <p class="card-description">Моя личная систематизированная коллекция игр и фильмов</p>
+                            <div class="card-preview">
+                                <img src="resources/Превью проектов/Таблица фильмы игры.png" class="img-fluid" alt="Список игр и фильмов">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col project-card">
+                        <div class="card-content">
+                            <div class="row card-header">
+                                <h3 class="col-6">Игра (GitHub)</h3>
+                                <span class="col-6 status complete">Complete</span>
+                            </div>
+                            <h2>Game “DRYVE” for GGJ 2024</h2>
+                            <p class="card-description">Story of friendship and the beginning of a new life</p>
+                            <div class="card-preview">
+                                <img src="resources/Превью проектов/DRYVE.png" class="img-fluid" alt="Превью игры">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col project-card">
+                        <div class="card-content">
+                            <div class="row card-header">
+                                <h3 class="col-6">Игра (GitHub)</h3>
+                                <span class="col-6 status complete">Complete</span>
+                            </div>
+                            <h2>Game “Spirit Sorcerer” for Ludum Dare</h2>
+                            <p class="card-description">Arena shooter with spelings about the little witch</p>
+                            <div class="card-preview">
+                                <img src="resources/Превью проектов/SS.png" class="img-fluid" alt="ТГ канал">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col project-card">
+                        <div class="card-content">
+                            <div class="row card-header">
+                                <h3 class="col-6">Игра (GitHub)</h3>
+                                <span class="col-6 status complete">Complete</span>
+                            </div>
+                            <h2>Game “Bubblefly Effect” for GGJ 2025</h2>
+                            <p class="card-description">Platform with unique wind mechanics. Control the element to overcome all obstacles</p>
+                            <div class="card-preview">
+                                <img src="resources/Превью проектов/BE.png" class="img-fluid" alt="Превью игры">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col project-card">
+                        <div class="card-content">
+                            <div class="row card-header">
+                                <h3 class="col-6">Игра (GitHub)</h3>
+                                <span class="col-6 status complete">Complete</span>
+                            </div>
+                            <h2>Console-game “Alchemical Laboratory”</h2>
+                            <p class="card-description">The doodle alchemy game</p>
+                            <div class="card-preview">
+                                <img src="resources/Превью проектов/Алхимия 2.png" class="img-fluid" alt="Превью игры">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col project-card">
+                        <div class="card-content">
+                            <div class="row card-header">
+                                <h3 class="col-6">Игра (GitHub)</h3>
+                                <span class="col-6 status in-progress">In progress</span>
+                            </div>
+                            <h2>“Untitled” rpg-runner game</h2>
+                            <p class="card-description">Story-adventure game about battles against the order of magic inquisitors</p>
+                            <div class="card-preview">
+                                <img src="resources/Превью проектов/SoI.png" class="img-fluid" alt="Превью игры">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col project-card">
+                        <div class="card-content">
+                            <div class="row card-header">
+                                <h3 class="col-6">Игра (GitHub)</h3>
+                                <span class="col-6 status in-progress">In progress</span>
+                            </div>
+                            <h2>“Untitled” 2D top-down shooter on Godot </h2>
+                            <p class="card-description">Arena-shooter about the survival of a fighting frog</p>
+                            <div class="card-preview">
+                                <img src="resources/Превью проектов/Godot shooter.png" class="img-fluid" alt="Превью игры">
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Списки игр/фильмов -->
-                <div class="col">
-                    <div class="project-card">
-                        <div class="card-border">
-                            <div class="card-content">
-                                <div class="card-header">
-                                    <h3>Списки игр/фильмов</h3>
-                                </div>
-                                <p class="card-description">Кураторские подборки и рецензии на самые значимые произведения поп-культуры</p>
-                                <div class="card-preview">
-                                    <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Reviews+Lists" alt="Списки">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Игры -->
-                <div class="col">
-                    <div class="project-card">
-                        <div class="card-border">
-                            <div class="card-content">
-                                <div class="card-header">
-                                    <h3>Инди-игра</h3>
-                                    <span class="status complete">Complete</span>
-                                </div>
-                                <p class="card-description">Независимый игровой проект с уникальной механикой и визуальным стилем</p>
-                                <div class="card-preview">
-                                    <img src="https://via.placeholder.com/400x250/ec4899/ffffff?text=Indie+Game" alt="Игра">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Еще одна игра -->
-                <div class="col">
-                    <div class="project-card">
-                        <div class="card-border">
-                            <div class="card-content">
-                                <div class="card-header">
-                                    <h3>Мобильная игра</h3>
-                                    <span class="status in-progress">In progress</span>
-                                </div>
-                                <p class="card-description">Разработка казуальной мобильной игры с упором на геймплей и визуал</p>
-                                <div class="card-preview">
-                                    <img src="https://via.placeholder.com/400x250/14b8a6/ffffff?text=Mobile+Game" alt="Мобильная игра">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Контакты -->
-        <section id="contacts" class="row contacts">
-            <div class="contacts-content col-10">
+         <section id="contacts" class="row">
+            <div class="col-10">
                 <h2>Остались вопросы, есть идеи, предложения? Можете задать мне их здесь, а также посмотреть мои работы</h2>
                 <div class="social-links">
                     <a href="#" class="social-link">
@@ -228,10 +262,12 @@
                     </a>
                 </div>
             </div>
-        </section>
+         </section>
+    </div>
 
-        <!-- Подвал -->
-        <footer class="row footer" style="margin-top: 10px;">
+    <!-- Подвал -->
+    <footer class="container">
+        <div class="row">
             <div class="footer-section col-lg-4 col-12">
                 <div class="footer-logo">
                     <img src="resources/Logo.svg" alt="Dexitti logo" width="85" height="85">
@@ -260,8 +296,8 @@
                     <li><a href="#">Youtube</a></li>
                 </ul>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
