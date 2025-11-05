@@ -2,7 +2,7 @@
 :root {
     --bg: #121212;
     --bg-secondary: #333333;
-    --bg-header: #2c2c2ccc; /*cc - 80% прозрачности, 99 - 60% */
+    --bg-header: #2c2c2c;
     --text-color: #e6e6e6;
     --accent-color: #8843D6;
     --primary-color: #1533ad;
@@ -10,7 +10,9 @@
     --tertiary-color: #ff9900;
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     --transition: all 0.2s ease;
-    
+    --header-h: 70px;
+    --rotation: 0deg;
+
     /* Шрифты */
     --font-accent: 'Gagalin', cursive;
     --font-heading: 'Montserrat', sans-serif;
@@ -51,8 +53,301 @@ h3 {
     font-weight: 600;
 }
 
+/* Чтобы якоря не прятались под шапку */
+section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
+
 .container {
     background-color: var(--bg-secondary);
 }
 
-/* Responsive Grid
+/* Шапка */
+.header {
+    background-color: rgb(from var(--bg-header) r g b / 0.8);
+    padding: 0.5rem 50px;
+    border-radius: 0 0 50px 50px;
+    box-shadow: var(--shadow);
+}
+
+.header.is-scrolled {
+    backdrop-filter: blur(10px);
+}
+
+.header-spacer {
+    height: var(--header-h);
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: #8843D6;
+    margin-left: 2rem;
+}
+
+.navbar {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-link {
+    font-size: 1.25rem; /* Починить! */
+    
+}
+
+.nav-link.home {
+    --link-color: #1533ad;
+    --link-radius: 10px 10px 10px 50px;
+}
+.nav-link.art {
+    --link-color: #8843D6;
+    --link-radius: 20px;
+}
+.nav-link.projects {
+    --link-color: #2ed6c8;
+    --link-radius: 20px;
+}
+.nav-link.contacts {
+    --link-color: #ff9900;
+    --link-radius: 10px 10px 50px 10px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgb(from var(--link-color) r g b / 0.6);
+    border-radius: var(--link-radius);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 52px;
+    height: 52px;
+    transition: var(--transition);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle-svg {
+    width: 52px;
+    height: 52px;
+    transition: var(--transition);
+}
+
+.theme-toggle-bg {
+    fill: var(--primary-color);
+    transition: var(--transition);
+}
+
+.theme-toggle-elements {
+    fill: var(--text-color);
+    stroke: var(--text-color);
+    transition: var(--transition);
+}
+
+.fas-moon {display: none; }
+.fas-sun {display: block; }
+
+[data-theme="light"] .fas-moon {display: block; }
+[data-theme="light"] .fas-sun {display: none; }
+
+.boundary-line {
+    transform: rotate(var(--rotation));
+    transform-origin: 28px 29px;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-toggle-svg {
+    transform: scale(1.1);
+}
+
+.theme-toggle:hover .theme-toggle-bg {
+    fill: var(--accent-color);
+}
+
+/* Главный экран */
+.hero-shot {
+    height: 91vh;
+    padding: 30px 12px;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-indicator i {
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Творчество */
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+
+/* Проеты */
+.project-card {
+    background: var(--bg-header);
+    border-radius: 50px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.card-content {
+    background: var(--accent-color);
+    border-radius: 26px;
+    padding: 1.5rem;
+    height: 100%;
+}
+
+h2.card-header {
+    color: #121212;
+    font-size: 1.25rem;
+}
+
+.card-header h3 {
+    color: #121212;
+    font-size: 1.5rem;
+}
+
+/* Волновой блик по тексту */
+.status.complete { --wave-color: #88df80; }
+.status.in-progress { --wave-color: #ff964f; }
+
+.status:hover {
+    background-image: linear-gradient(145deg,
+        #121212 42%,
+        var(--wave-color) 50%,
+        #121212 55%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 200%;
+    animation: text-wave 1.5s ease-out forwards;
+}
+
+@keyframes text-wave {
+    0% { background-position: bottom right; }
+    100% { background-position: top left; }
+}
+
+.card-preview img {
+    width: 100%;
+    height: auto;
+    border-radius: 1.5rem;
+}
+
+/* Контакты */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    color: var(--text-color);
+    font-size: 52px;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    color: var(--tertiary-color);
+    transform: translateY(-4px);
+}
+
+/* Подвал */
+.footer {
+    padding: 2rem 100px 20px;
+}
+
+.footer-section {
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+.footer-section h4 {
+    font-family: var(--font-body);
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.footer-section a:hover {
+    color: var(--accent-color);
+}
+
+/* Responsive Grid */
+/* xs(default) > sm > md > lg > xl > xxl */
+
+/* sm <576px */
+@media (max-width: 575.98px) {
+    .header { padding: 0.25rem 16px; border-radius: 0 0 32px 32px; }
+    .logo-text { font-size: 1.25rem; }
+    .navbar { gap: 0.5rem; }
+    .navbar .nav-link { padding: 0.25rem 0.5rem; font-size: 0.95rem; }
+
+    .footer {padding: 2rem 20px 20px;}
+}
+
+/* md ≥768*/
+@media (min-width: 768px) {
+    .header { padding: 0.5rem 24px; }
+    .logo-text { font-size: 1.5rem; }
+    .navbar { gap: 0.75rem; }
+    .navbar .nav-link { padding: 0.25rem 0.75rem; }
+
+    .footer {padding: 2rem 60px 20px;}
+}
+
+/* lg ≥992px */
+@media (min-width: 992px) {
+    :root { --header-h: 88px; }
+    /* .header { padding: 0.75rem 50px; }
+    .logo-text { font-size: 2rem; }
+    .navbar { gap: 1rem; }
+    .navbar .nav-link { padding: 0.25rem 1rem; font-size: 1rem; } */
+
+    .footer {padding: 2rem 80px 20px;}
+}
+
+/* lg ≥1200px */
+@media (min-width: 1200px) {
+
+    .footer {padding: 2rem 100px 20px;}
+}

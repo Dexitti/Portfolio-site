@@ -11,6 +11,30 @@ themeToggle.addEventListener('click', () => {
     
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+
+    // Вращение линии
+    const currentDeg = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--rotation')) || 0;
+    document.documentElement.style.setProperty('--rotation', `${currentDeg - 180}deg`);
+});
+
+// Обработчик active в навигации
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+// Header scroll background
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (!header) return;
+    if (window.scrollY > 50) {
+        header.classList.add('is-scrolled');
+    } else {
+        header.classList.remove('is-scrolled');
+    }
 });
 
 // Creativity Categories
@@ -50,47 +74,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header background on scroll
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 100) {
-        header.style.background = 'var(--bg-primary)';
-        header.style.backdropFilter = 'blur(10px)';
-    } else {
-        header.style.background = 'var(--bg-primary)';
-        header.style.backdropFilter = 'none';
-    }
-});
-
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe elements for animation
-document.querySelectorAll('.project-card, .work-item, .hero-content, .hero-image').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-});
-
 // Copy email to clipboard
 const mailLink = document.getElementById('mail-link');
 if (mailLink) {
     mailLink.addEventListener('click', async (e) => {
         e.preventDefault();
-        const email = mailLink.textContent.trim();
+        const email = mailLink.getAttribute('data-email') || mailLink.textContent.trim();
         
         try {
             await navigator.clipboard.writeText(email);

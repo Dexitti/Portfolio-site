@@ -530,10 +530,10 @@ section {
     margin-bottom: 1rem;
 }
 
-#mail-link {
+/* #mail-link {
     display: inline;
-    text-decoration: underline;
-}
+    
+} */
 
 .footer-section h4 {
     font-family: var(--font-body);
