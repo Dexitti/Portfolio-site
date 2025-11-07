@@ -17,6 +17,11 @@ themeToggle.addEventListener('click', () => {
     document.documentElement.style.setProperty('--rotation', `${currentDeg - 180}deg`);
 });
 
+// Автоматически включаем светлую тему на мобильных
+if (window.innerWidth <= 768 && !localStorage.getItem('theme')) {
+    document.documentElement.setAttribute('data-theme', 'light');
+}
+
 // Обработчик active в навигации
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
@@ -26,14 +31,45 @@ navLinks.forEach(link => {
     });
 });
 
+// Автоматическое переключение активных ссылок при прокрутке
+function updateActiveNavLink() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    navLinks.forEach(link => link.classList.remove('active'));
+    
+    let activeLink;
+    if (scrollY < window.innerHeight * 0.4) {
+        activeLink = '.nav-link.home';
+    } else if (scrollY > documentHeight - windowHeight - 150) {
+        activeLink = '.nav-link.contacts';
+    } else {
+        const artSection = document.getElementById('art');
+        const projectsSection = document.getElementById('projects');
+        
+        if (artSection && projectsSection) {
+            const artCenter = artSection.offsetTop + artSection.offsetHeight / 2;
+            const projectsCenter = projectsSection.offsetTop + projectsSection.offsetHeight / 2;
+            
+            activeLink = scrollY < (artCenter + projectsCenter) / 2 
+                ? '.nav-link.art' 
+                : '.nav-link.projects';
+        }
+    }
+    
+    if (activeLink) {
+        document.querySelector(activeLink).classList.add('active');
+    }
+}
+window.addEventListener('scroll', updateActiveNavLink);
+updateActiveNavLink(); // Вызываем сразу при загрузке
+
 // Header scroll background
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
-    if (!header) return;
-    if (window.scrollY > 50) {
-        header.classList.add('is-scrolled');
-    } else {
-        header.classList.remove('is-scrolled');
+    if (header) {
+        header.classList.toggle('is-scrolled', window.scrollY > 50); // toggle(добавляет класс, при условии) 
     }
 });
 

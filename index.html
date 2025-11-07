@@ -14,12 +14,12 @@
     <!-- Шапка -->
     <header class="container fixed-top" style="background: none;">
         <div class="row header align-items-center justify-content-between">
-            <div class="col-lg-4 col-4 d-flex align-items-center">
+            <div class="col-lg-4 col-4 d-md-flex align-items-center d-none">
                 <img src="resources/Logo.svg" class="img-fluid" alt="Dexitti logo" width="52" height="52">
-                <span class="logo-text" style="font-size: 2rem; cursor: default;">Dexitti</span>
+                <span class="logo-text status default" style="font-size: 2rem; cursor: default;">Dexitti</span>
             </div>
-            <div class="col-lg-6 col-8">
-                <nav class="navbar justify-content-around">
+            <div class="col-lg-6 col-md-8 col">
+                <nav class="navigation">
                     <a href="#home" class="nav-link home active" aria-current="page">Профиль</a>
                     <a href="#art" class="nav-link art">Творчество</a>
                     <a href="#projects" class="nav-link projects">Проекты</a>
@@ -63,22 +63,23 @@
 
     <!-- Главный экран -->
     <main class="container hero-shot" style="margin-bottom: 10px;">
-        <div class="row align-items-center">
-            <div class="col order-1 d-lg-none">
-                <h1 class="hero-title">Hi, Hello, Дарова, 🤘, Привет!</h1>
-                <h2 class="hero-subtitle">Я Dexitti (Дмитрий)</h2>
+        <div class="row profile align-items-center">
+            <div class="col-11 offset-1 order-1 d-lg-none">
+                <h2 class="hero-subtitle">Hi, Hello, Дарова, 🤘, Привет!</h1>
+                <h1 class="hero-title">Я Dexitti (Дмитрий)</h2>
             </div>
             <div class="col-lg-5 order-2 order-lg-1 d-flex justify-content-center">
                 <img src="resources/Logo.png" class="img-fluid" alt="Dexitti" width="300" height="300">
             </div>
-            <div class="col-lg-7 order-3 order-lg-2">
-                <div class="hero-description d-none d-lg-block">
-                    <h2 class="hero-title">Hi, Hello, Дарова, 🤘, Привет!</h2>
-                    <h1 class="hero-subtitle">Я Dexitti (Дмитрий)</h1>
+            <div class="col-lg-7 hero-description order-3 order-lg-2">
+                <div class="d-none d-lg-block">
+                    <h2 class="hero-subtitle">Hi, Hello, Дарова, 🤘, Привет!</h1>
+                    <h1 class="hero-title">Я Dexitti (Дмитрий)</h2>
                 </div>
-                <div class="hero-description">
+                <div>
                     <p class="hero-text">
-                        Художник, 3D-моделлер и геймдев-энтузиаст. Более 10 лет занимаюсь изобразительным искусством: 
+                        <b>Художник, 3D-моделлер и геймдев-энтузиаст.</b><br>
+                        Более 10 лет занимаюсь изобразительным искусством: 
                         цифровым и традиционным рисунком, дизайном и прикладным творчеством.
                     </p>
                     <p class="hero-text">
@@ -99,35 +100,44 @@
     <div class="container">
         <!-- Творчество -->
         <section id="art" class="row">
-            <h1 class="section-title col-12">Творчество</h1>
+            <svg class="wave-line" width="988" height="2239" viewBox="0 0 988 2239" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M319.564 0.5C226.731 62 50.7964 212.624 55.0644 325.5C74.0649 828 941.065 809 979.065 1230.5C1010.39 1578 -203.435 1539 37.0649 1915C303.194 2080.58 442.891 2137.05 520.022 2231" stroke="#1533AD" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="80 80"/>
+            </svg>
+            <h1 class="section-title col-11 offset-1">Творчество</h1>
             <div class="art-categories col-12">
-                <article class="row category-circle active" data-category="drawing">
+                <article class="row align-items-center active" data-category="drawing">
                     <div class="col-lg-5">
-                        <img src="resources/Рисунки/1760180854003.jpg" class="img-fluid" alt="Рисунки">
+                        <div class="circle-mask drawing-circle">
+                            <img src="resources/Рисунки/1760180854003.jpg" class="img-fluid" alt="Рисунки">
+                        </div>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-5 offset-lg-1">
                         <h2>Рисование</h2>
                         <p>
                             Это фундамент моего творчества, сочетающий в себе всё от академической живописи до цифрового рисунка. Создаю как быстрые скетчи, так и детализированные произведения.
                         </p>
                     </div>
                 </article>
-                <article class="row category-circle" data-category="drawing">
-                    <div class="col-lg-7">
+                <article class="row align-items-center" data-category="design">
+                    <div class="col-lg-5 offset-lg-1">
                         <h2>Дизайн</h2>
                         <p>
                             Активно развиваюсь в этом направлении, а благодаря точному подходу и пониманию законов композиции разрабатываю функциональные и эстетические работы.
                         </p>
                     </div>
-                    <div class="col-lg-5">
-                        <img src="resources/Дизайн/1 Космос.svg" class="img-fluid" alt="Композиции">
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="circle-mask design-circle">
+                            <img src="resources/Дизайн/1 Космос.svg" class="img-fluid" alt="Композиции">
+                        </div>
                     </div>
                 </article>
-                <article class="row category-circle active" data-category="drawing">
+                <article class="row align-items-center" data-category="modeling">
                     <div class="col-lg-5">
-                        <img src="resources/Моделирование/Рейлджек превью.png" class="img-fluid" alt="Модели">
+                        <div class="circle-mask modeling-circle">
+                            <img src="resources/Моделирование/Рейлджек превью.png" class="img-fluid" alt="Модели">
+                        </div>
                     </div>
-                    <div class="col-lg-7">
+                    <div class="col-lg-5 offset-lg-1">
                         <h2>Моделирование</h2>
                         <p>
                             Я человек с отличным трехмерным видением, что позволяет воплотить любую идею через полигональное и параметрическое моделирование.
@@ -139,117 +149,133 @@
 
         <!-- Проекты -->
         <section id="projects" class="row">
-            <h1 class="section-title col-12">Проекты</h1>
-            <div class="projects col-12">
+            <h1 class="section-title col-11 offset-1">Проекты</h1>
+            <div class="projects col">
                 <div class="row row-cols-xl-3 row-cols-lg-2 row-cols-1">
-                    <div class="col project-card">
-                        <div class="card-content">
-                            <div class="row card-header">
-                                <h3>Telegram</h3>
-                            </div>
-                            <p class="card-description">Блог-канал о всяких интересностях</p>
-                            <div class="card-preview">
-                                <img src="resources/Превью проектов/TG Channel.png" class="img-fluid" alt="ТГ канал">
-                            </div>
+                    <div class="px-2 mb-3">
+                        <div class="col project-card">
+                            <a class="card-content" href="https://t.me/Dexitti" target="_blank">
+                                <div class="row card-header">
+                                    <h3>Telegram</h3>
+                                </div>
+                                <p class="card-description">Блог-канал о всяких интересностях</p>
+                                <div class="card-preview">
+                                    <img src="resources/Превью проектов/TG Channel.png" class="img-fluid" alt="ТГ канал">
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col project-card">
-                        <div class="card-content">
-                            <div class="row card-header">
-                                <h3>Список игр и фильмов</h3>
-                            </div>
-                            <p class="card-description">Моя личная систематизированная коллекция игр и фильмов</p>
-                            <div class="card-preview">
-                                <img src="resources/Превью проектов/Таблица фильмы игры.png" class="img-fluid" alt="Список игр и фильмов">
-                            </div>
+                    <div class="px-2 mb-3">
+                        <div class="col project-card">
+                            <a class="card-content" href="https://docs.google.com/spreadsheets/d/1hTweciZA5sOC6ymBIu7bgZX-GT-2BUAZ/edit?usp=sharing&ouid=115921269342724429988&rtpof=true&sd=true" target="_blank">
+                                <div class="row card-header">
+                                    <h3>Список игр и фильмов</h3>
+                                </div>
+                                <p class="card-description">Моя личная систематизированная коллекция игр и фильмов</p>
+                                <div class="card-preview">
+                                    <img src="resources/Превью проектов/Таблица фильмы игры.png" class="img-fluid" alt="Список игр и фильмов">
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col project-card">
-                        <div class="card-content">
-                            <div class="row card-header">
-                                <h3 class="col-6">Игра (GitHub)</h3>
-                                <h3 class="col-6 status complete">Complete</h3>
-                            </div>
-                            <h2 class="card-header">Game “DRYVE” for GGJ 2024</h2>
-                            <p class="card-description">Story of friendship and the beginning of a new life</p>
-                            <div class="card-preview">
-                                <img src="resources/Превью проектов/DRYVE.png" class="img-fluid" alt="Превью игры">
-                            </div>
+                    <div class="px-2 mb-3">
+                        <div class="col project-card">
+                            <a class="card-content" href="https://github.com/MIDIFrogs" target="_blank">
+                                <div class="row card-header">
+                                    <h3 class="col-7">Игра (GitHub)</h3>
+                                    <h3 class="col-5 status complete">Complete</h3>
+                                </div>
+                                <h2 class="card-header">Game “DRYVE” for GGJ 2024</h2>
+                                <p class="card-description">Story of friendship and the beginning of a new life</p>
+                                <div class="card-preview">
+                                    <img src="resources/Превью проектов/DRYVE.png" class="img-fluid" alt="Превью игры">
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col project-card">
-                        <div class="card-content">
-                            <div class="row card-header">
-                                <h3 class="col-6">Игра (GitHub)</h3>
-                                <h3 class="col-6 status complete">Complete</h3>
-                            </div>
-                            <h2 class="card-header">Game “Spirit Sorcerer” for Ludum Dare</h2>
-                            <p class="card-description">Arena shooter with spelings about the little witch</p>
-                            <div class="card-preview">
-                                <img src="resources/Превью проектов/SS.png" class="img-fluid" alt="ТГ канал">
-                            </div>
+                    <div class="px-2 mb-3">
+                        <div class="col project-card">
+                            <a class="card-content" href="https://github.com/MIDIFrogs/SpiritSorcerer" target="_blank">
+                                <div class="row card-header">
+                                    <h3 class="col-7">Игра (GitHub)</h3>
+                                    <h3 class="col-5 status complete">Complete</h3>
+                                </div>
+                                <h2 class="card-header">Game “Spirit Sorcerer” for Ludum Dare</h2>
+                                <p class="card-description">Arena shooter with spelings about the little witch</p>
+                                <div class="card-preview">
+                                    <img src="resources/Превью проектов/SS.png" class="img-fluid" alt="ТГ канал">
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col project-card">
-                        <div class="card-content">
-                            <div class="row card-header">
-                                <h3 class="col-6">Игра (GitHub)</h3>
-                                <h3 class="col-6 status complete">Complete</h3>
-                            </div>
-                            <h2 class="card-header">Game “Bubblefly Effect” for GGJ 2025</h2>
-                            <p class="card-description">Platform with unique wind mechanics. Control the element to overcome all obstacles</p>
-                            <div class="card-preview">
-                                <img src="resources/Превью проектов/BE.png" class="img-fluid" alt="Превью игры">
-                            </div>
+                    <div class="px-2 mb-3">
+                        <div class="col project-card">
+                            <a class="card-content" href="https://github.com/MIDIFrogs/Bublik" target="_blank">
+                                <div class="row card-header">
+                                    <h3 class="col-7">Игра (GitHub)</h3>
+                                    <h3 class="col-5 status complete">Complete</h3>
+                                </div>
+                                <h2 class="card-header">Game “Bubblefly Effect” for GGJ 2025</h2>
+                                <p class="card-description">Platform with unique wind mechanics. Control the element to overcome all obstacles</p>
+                                <div class="card-preview">
+                                    <img src="resources/Превью проектов/BE.png" class="img-fluid" alt="Превью игры">
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col project-card">
-                        <div class="card-content">
-                            <div class="row card-header">
-                                <h3 class="col-6">Игра (GitHub)</h3>
-                                <h3 class="col-6 status complete">Complete</h3>
-                            </div>
-                            <h2 class="card-header">Console-game “Alchemical Laboratory”</h2>
-                            <p class="card-description">The doodle alchemy game</p>
-                            <div class="card-preview">
-                                <img src="resources/Превью проектов/Алхимия 2.png" class="img-fluid" alt="Превью игры">
-                            </div>
+                    <div class="px-2 mb-3">
+                        <div class="col project-card">
+                            <a class="card-content" href="https://github.com/Dexitti/Alchemical-Laboratory" target="_blank">
+                                <div class="row card-header">
+                                    <h3 class="col-7">Игра (GitHub)</h3>
+                                    <h3 class="col-5 status complete">Complete</h3>
+                                </div>
+                                <h2 class="card-header">Console-game “Alchemical Laboratory”</h2>
+                                <p class="card-description">The doodle alchemy game</p>
+                                <div class="card-preview">
+                                    <img src="resources/Превью проектов/Алхимия 2.png" class="img-fluid" alt="Превью игры">
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col project-card">
-                        <div class="card-content">
-                            <div class="row card-header">
-                                <h3 class="col-6">Игра (GitHub)</h3>
-                                <h3 class="col-6 status in-progress">In progress</h3>
-                            </div>
-                            <h2 class="card-header">“Untitled” rpg-runner game</h2>
-                            <p class="card-description">Story-adventure game about battles against the order of magic inquisitors</p>
-                            <div class="card-preview">
-                                <img src="resources/Превью проектов/SoI.png" class="img-fluid" alt="Превью игры">
-                            </div>
+                    <div class="px-2 mb-3">
+                        <div class="col project-card">
+                            <a class="card-content" href="https://github.com/MIDIFrogs/Alone-In-Inquisition" target="_blank">
+                                <div class="row card-header">
+                                    <h3 class="col-7">Игра (GitHub)</h3>
+                                    <h3 class="col-5 status in-progress">In progress</h3>
+                                </div>
+                                <h2 class="card-header">“Untitled” rpg-runner game</h2>
+                                <p class="card-description">Story-adventure game about battles against the order of magic inquisitors</p>
+                                <div class="card-preview">
+                                    <img src="resources/Превью проектов/SoI.png" class="img-fluid" alt="Превью игры">
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="col project-card">
-                        <div class="card-content">
-                            <div class="row card-header">
-                                <h3 class="col-6">Игра (GitHub)</h3>
-                                <h3 class="col-6 status in-progress">In progress</h3>
-                            </div>
-                            <h2 class="card-header">“Untitled” 2D top-down shooter on Godot </h2>
-                            <p class="card-description">Arena-shooter about the survival of a fighting frog</p>
-                            <div class="card-preview">
-                                <img src="resources/Превью проектов/Godot shooter.png" class="img-fluid" alt="Превью игры">
-                            </div>
+                    <div class="px-2 mb-3">
+                        <div class="col project-card">
+                            <a class="card-content" href="https://github.com/Dexitti/2d-top-down-shooter" target="_blank">
+                                <div class="row card-header">
+                                    <h3 class="col-7">Игра (GitHub)</h3>
+                                    <h3 class="col-5 status in-progress">In progress</h3>
+                                </div>
+                                <h2 class="card-header">“Untitled” 2D top-down shooter on Godot </h2>
+                                <p class="card-description">Arena-shooter about the survival of a fighting frog</p>
+                                <div class="card-preview">
+                                    <img src="resources/Превью проектов/Godot shooter.png" class="img-fluid" alt="Превью игры">
+                                </div>
+                            </a>
                         </div>
                     </div>
-
+                
                 </div>
             </div>
         </section>
 
         <!-- Контакты -->
          <section id="contacts" class="row justify-content-center">
-            <div class="col-10 mb-5 text-center">
+            <div class="col-10 my-5 text-center">
                 <h2>Остались вопросы, есть идеи, предложения? Можете задать мне их здесь, а также посмотреть мои работы</h2>
                 <div class="social-links">
                     <a href="https://t.me/Dexitti" class="social-link" target="_blank">
@@ -284,7 +310,7 @@
             <div class="footer-section col-lg-4 col-12">
                 <div class="d-flex mb-3 align-items-center">
                     <img src="resources/Logo.svg" alt="Dexitti logo" width="85" height="85">
-                    <span class="logo-text" style="font-size: 2.5rem;">Dexitti</span>
+                    <span class="logo-text status default" style="font-size: 2.5rem;">Dexitti</span>
                 </div>
                 <p>
                     Для коммерции: <a href="mailto:dima_yakovlev_05@list.ru" id="mail-link" style="text-decoration: underline;" data-email="dima_yakovlev_05@list.ru">dima_yakovlev_05@list.ru</a>

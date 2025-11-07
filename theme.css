@@ -41,6 +41,7 @@ body {
 h1 {
     font-family: var(--font-accent);
     font-weight: 400;
+    letter-spacing: 0.09em;
 }
 
 h2 {
@@ -53,15 +54,17 @@ h3 {
     font-weight: 600;
 }
 
-/* Чтобы якоря не прятались под шапку */
-section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
-
 .container {
     background-color: var(--bg-secondary);
 }
 
+.hero-shot p, .art-categories p {
+    letter-spacing: 0.09em;
+}
+
 /* Шапка */
 .header {
+    height: var(--header-h);
     background-color: rgb(from var(--bg-header) r g b / 0.8);
     padding: 0.5rem 50px;
     border-radius: 0 0 50px 50px;
@@ -80,41 +83,46 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
     font-family: var(--font-heading);
     font-weight: 700;
     color: #8843D6;
-    margin-left: 2rem;
 }
 
-.navbar {
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-family: var(--font-heading);
     font-weight: 600;
     transition: var(--transition);
 }
 
 .nav-link {
-    font-size: 1.25rem; /* Починить! */
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+    padding: 1px 16px;
+    font-size: 1.25rem;
 }
 
 .nav-link.home {
     --link-color: #1533ad;
-    --link-radius: 10px 10px 10px 50px;
+    border-radius: 10px 10px 10px 42px;
 }
 .nav-link.art {
     --link-color: #8843D6;
-    --link-radius: 20px;
+    border-radius: 20px;
 }
 .nav-link.projects {
     --link-color: #2ed6c8;
-    --link-radius: 20px;
+    border-radius: 20px;
 }
 .nav-link.contacts {
     --link-color: #ff9900;
-    --link-radius: 10px 10px 50px 10px;
+    border-radius: 10px 10px 42px 10px;
 }
 
 .nav-link:hover,
 .nav-link.active {
     background-color: rgb(from var(--link-color) r g b / 0.6);
-    border-radius: var(--link-radius);
 }
 
 .theme-toggle {
@@ -169,8 +177,12 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
 
 /* Главный экран */
 .hero-shot {
-    height: 91vh;
+    height: 100vh;
     padding: 30px 12px;
+}
+
+.profile {
+    min-height: 80vh;
 }
 
 .scroll-indicator {
@@ -198,12 +210,74 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
     }
 }
 
+.hero-description {
+    max-width: 45%;
+}
+
 /* Творчество */
 .section-title {
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-top: 70px;
+    margin-bottom: 54px;
 }
 
+.art-categories article {
+    overflow: hidden;
+}
+
+.circle-mask {
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    background: var(--bg-header);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.art-categories .img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.drawing-circle {
+    border: 12px solid var(--accent-color);
+    transform: translateX(-95px);
+}
+.design-circle {
+    border: 12px solid var(--secondary-color);
+}
+.modeling-circle {
+    border: 12px solid var(--tertiary-color);
+    transform: translateX(-95px);
+}
+
+.wave-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+#art {
+    position: relative;
+    overflow: hidden;
+}
+
+#art h1,
+#art .art-categories {
+    position: relative;
+    z-index: 1;
+}
 
 /* Проеты */
 .project-card {
@@ -211,35 +285,48 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 8px); }
     border-radius: 50px;
     padding: 1.5rem;
     box-shadow: var(--shadow);
-    margin-bottom: 2rem;
 }
 
 .card-content {
     background: var(--accent-color);
     border-radius: 26px;
     padding: 1.5rem;
-    height: 100%;
+    min-height: 348px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease;
 }
 
-h2.card-header {
-    color: #121212;
-    font-size: 1.25rem;
+.card-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
 }
 
-.card-header h3 {
+.card-content h2, h3, p {
+    margin-bottom: 0.5rem; /* Возвращаем default*/
+}
+
+.card-header {
     color: #121212;
-    font-size: 1.5rem;
+}
+
+.status {
+    display: flex;
+    justify-content: end;
 }
 
 /* Волновой блик по тексту */
-.status.complete { --wave-color: #88df80; }
-.status.in-progress { --wave-color: #ff964f; }
+.status.default { --text-color: #8843D6; --wave-color: #ffffff; }
+.status.complete { --text-color: #121212; --wave-color: #88df80; }
+.status.in-progress { --text-color: #121212; --wave-color: #ff964f; }
 
 .status:hover {
     background-image: linear-gradient(145deg,
-        #121212 42%,
+        var(--text-color) 42%,
         var(--wave-color) 50%,
-        #121212 55%
+        var(--text-color) 55%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -251,6 +338,10 @@ h2.card-header {
 @keyframes text-wave {
     0% { background-position: bottom right; }
     100% { background-position: top left; }
+}
+
+.card-preview {
+    margin-top: auto;
 }
 
 .card-preview img {
@@ -315,39 +406,110 @@ h2.card-header {
 /* Responsive Grid */
 /* xs(default) > sm > md > lg > xl > xxl */
 
-/* sm <576px */
-@media (max-width: 575.98px) {
-    .header { padding: 0.25rem 16px; border-radius: 0 0 32px 32px; }
-    .logo-text { font-size: 1.25rem; }
-    .navbar { gap: 0.5rem; }
-    .navbar .nav-link { padding: 0.25rem 0.5rem; font-size: 0.95rem; }
-
-    .footer {padding: 2rem 20px 20px;}
+@media (max-width: 767.98px) {
+    .container {max-width: 100% !important; }
 }
 
-/* md ≥768*/
+/* xs <576px */
+@media (min-width: 300px) {
+    .header {padding: 0.5rem 0; }
+    .logo-text {
+        font-size: 1.25rem;
+        margin-left: 1.25rem;
+    }
+    .nav-link {
+        height: 52px;
+        padding: 1px 8px;
+        font-size: 0.85rem;
+    }
+
+    .hero-description {max-width: 100%; }
+    .hero-subtitle {font-size: 1.3rem; }
+
+    h2.card-header {font-size: 1.1rem; }
+    .card-header h3 {font-size: 1.145rem; }
+
+    .footer {padding: 1.5rem 40px 20px;}
+}
+
+/* sm ≥576 */
+@media (min-width: 576px) { /* Мб добавить иконки к кнопкам-навигации, как у Tijoe */
+    .header {padding: 0.5rem 20px; }
+    .logo-text { font-size: 1.25rem; }
+    .nav-link {
+        height: 52px;
+        padding: 1px 12px;
+        font-size: 1.25rem;
+    }
+
+    .hero-title {font-size: 3rem; }
+    .hero-subtitle {font-size: 2rem; }
+    .hero-text {font-size: 1.25rem; }
+
+    h2.card-header {font-size: 1.125rem; }
+    .card-header h3 {font-size: 1.375rem; }
+
+}
+
+/* md ≥768 */
 @media (min-width: 768px) {
-    .header { padding: 0.5rem 24px; }
-    .logo-text { font-size: 1.5rem; }
-    .navbar { gap: 0.75rem; }
-    .navbar .nav-link { padding: 0.25rem 0.75rem; }
+    :root { --header-h: 60px; }
+    .header {padding: 5px 30px; }
+    .header img {width: 50px; height: 50px; }
+    .logo-text {
+        font-size: 1.5rem;
+        margin-left: 1.5rem;
+    }
+    .nav-link {
+        height: 48px;
+        padding: 1px 11px;
+        font-size: 1rem;
+    }
 
     .footer {padding: 2rem 60px 20px;}
 }
 
 /* lg ≥992px */
 @media (min-width: 992px) {
-    :root { --header-h: 88px; }
-    /* .header { padding: 0.75rem 50px; }
+    :root { --header-h: 70px; }
+    .header {padding: 0.5rem 30px; }
+    .header img {width: 52px; height: 52px; }
     .logo-text { font-size: 2rem; }
-    .navbar { gap: 1rem; }
-    .navbar .nav-link { padding: 0.25rem 1rem; font-size: 1rem; } */
+    .nav-link {
+        padding: 1px 12px;
+        font-size: 1.1rem;
+    }
+    .nav-link.home {border-radius: 10px 10px 10px 50px; }
+    .nav-link.contacts {border-radius: 10px 10px 50px 10px; }
+
+    .hero-description {max-width: 50%; }
+    .hero-title {font-size: 2.3rem; }
+    .hero-subtitle {font-size: 1.6rem; }
+    .hero-text {font-size: 1rem; }
+
+    h2.card-header {font-size: 1.25rem; }
+    .card-header h3 {font-size: 1.5rem; }
 
     .footer {padding: 2rem 80px 20px;}
 }
 
-/* lg ≥1200px */
+/* xl ≥1200px */
 @media (min-width: 1200px) {
+    .header {padding: 0.5rem 50px; }
+    .logo-text { margin-left: 2rem; }
+    .nav-link {
+        height: 52px;
+        padding: 1px 16px;
+        font-size: 1.25rem;
+    }
+
+    .hero-description {max-width: 45%; }
+    .hero-title {font-size: 3rem; }
+    .hero-subtitle {font-size: 2rem; }
+    .hero-text {font-size: 1.25rem; }
+
+    h2.card-header {font-size: 1rem; }
+    .card-header h3 {font-size: 1.25rem; }
 
     .footer {padding: 2rem 100px 20px;}
 }
