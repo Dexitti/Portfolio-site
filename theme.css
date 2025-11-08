@@ -230,17 +230,61 @@ h3 {
     height: 620px;
     border-radius: 50%;
     background: var(--bg-header);
+    position: relative; /* для карусели */
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
 }
 
-.art-categories .img-fluid {
+.circle-mask img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
+}
+
+/* Карусель работ (максимум 10) */
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 2;
+    transition: background 0.3s;
+}
+
+.carousel-prev { left: 80px; }
+.carousel-next { right: 10px; }
+
+.design-circle .carousel-prev {left: 10px; }
+.design-circle .carousel-next {right: 80px; }
+
+.carousel-prev:hover, .carousel-next:hover {
+    background: rgba(0,0,0,0.8);
 }
 
 .drawing-circle {

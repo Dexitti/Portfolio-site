@@ -1,7 +1,15 @@
+// Размытие фона header'а при прокрутке
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (header) {
+        header.classList.toggle('is-scrolled', window.scrollY > 50); // toggle(добавляет класс, при условии) 
+    }
+});
+
 // Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
 
-// Check for saved theme, default to dark theme
+// Проверяем сохраненную тему, по умолчанию dark theme
 const savedTheme = localStorage.getItem('theme') || 'dark';
 document.documentElement.setAttribute('data-theme', savedTheme);
 
@@ -65,38 +73,7 @@ function updateActiveNavLink() {
 window.addEventListener('scroll', updateActiveNavLink);
 updateActiveNavLink(); // Вызываем сразу при загрузке
 
-// Header scroll background
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (header) {
-        header.classList.toggle('is-scrolled', window.scrollY > 50); // toggle(добавляет класс, при условии) 
-    }
-});
-
-// Creativity Categories
-const categoryCircles = document.querySelectorAll('.category-circle');
-const workItems = document.querySelectorAll('.work-item');
-
-categoryCircles.forEach(circle => {
-    circle.addEventListener('click', () => {
-        const category = circle.getAttribute('data-category');
-        
-        // Update active circle
-        categoryCircles.forEach(c => c.classList.remove('active'));
-        circle.classList.add('active');
-        
-        // Show corresponding work items
-        workItems.forEach(item => {
-            if (item.classList.contains(category)) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        });
-    });
-});
-
-// Smooth scrolling for anchor links
+// Плавная прокрутка для якорных ссылок
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -110,7 +87,77 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Copy email to clipboard
+// Карусель изображений
+document.querySelectorAll('.circle-mask').forEach(container => {
+    const slides = container.querySelectorAll('.carousel-slide');
+    const prevBtn = container.querySelector('.carousel-prev');
+    const nextBtn = container.querySelector('.carousel-next');
+    let currentIndex = 0;
+    let interval = null;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+    }
+
+    function isVisible() {
+        const rect = container.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    function updateAutoPlay() {
+        if (isVisible() && !interval) {
+            interval = setInterval(() => {
+                if (isVisible()) {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    showSlide(currentIndex);
+                } else {
+                    clearInterval(interval);
+                    interval = null;
+                }
+            }, 3000);
+        }
+    }
+
+    function resetTimer() {
+        if (interval) {
+            clearInterval(interval);
+            interval = null;
+            setTimeout(updateAutoPlay, 0);
+        }
+    }
+
+    // Кнопки prev/next
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+        resetTimer();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+        resetTimer();
+    });
+
+    // Оптимизированная проверка видимости
+    let ticking = false;
+    function checkVisibility() {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                updateAutoPlay();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', checkVisibility);
+    updateAutoPlay(); // При загрузке
+});
+
+// Копирование email в буфер
 const mailLink = document.getElementById('mail-link');
 if (mailLink) {
     mailLink.addEventListener('click', async (e) => {
