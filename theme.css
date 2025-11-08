@@ -218,7 +218,7 @@ h3 {
 .section-title {
     font-size: 2.5rem;
     margin-top: 70px;
-    margin-bottom: 54px;
+    margin-bottom: calc(1rem + 3.15vw);
 }
 
 .art-categories article {
@@ -276,12 +276,6 @@ h3 {
     z-index: 2;
     transition: background 0.3s;
 }
-
-.carousel-prev { left: 80px; }
-.carousel-next { right: 10px; }
-
-.design-circle .carousel-prev {left: 10px; }
-.design-circle .carousel-next {right: 80px; }
 
 .carousel-prev:hover, .carousel-next:hover {
     background: rgba(0,0,0,0.8);
@@ -396,9 +390,8 @@ h3 {
 
 /* Контакты */
 .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+    column-gap: 2rem;
+    row-gap: 1rem;
     flex-wrap: wrap;
 }
 
@@ -469,10 +462,16 @@ h3 {
 
     .hero-description {max-width: 100%; }
     .hero-subtitle {font-size: 1.3rem; }
+    .section-title {font-size: 2rem; }
+
+    .circle-mask {width: calc(350px + 12vw); height: calc(350px + 12vw); } /* !!! */
+    .carousel-prev { left: 10px; }
+    .carousel-next { right: 10px; }
 
     h2.card-header {font-size: 1.1rem; }
     .card-header h3 {font-size: 1.145rem; }
 
+    .contacts h2 {font-size: calc(1.5rem + 0.5vw); }
     .footer {padding: 1.5rem 40px 20px;}
 }
 
@@ -492,7 +491,6 @@ h3 {
 
     h2.card-header {font-size: 1.125rem; }
     .card-header h3 {font-size: 1.375rem; }
-
 }
 
 /* md ≥768 */
@@ -509,6 +507,11 @@ h3 {
         padding: 1px 11px;
         font-size: 1rem;
     }
+
+    .section-title {font-size: 2.5rem; }
+    .circle-mask {width: calc(350px + 12vw); height: calc(350px + 12vw); }
+    .carousel-prev { left: 80px; }
+    .design-circle .carousel-next {right: calc(80px * 12.9%); }
 
     .footer {padding: 2rem 60px 20px;}
 }
@@ -531,9 +534,13 @@ h3 {
     .hero-subtitle {font-size: 1.6rem; }
     .hero-text {font-size: 1rem; }
 
+    .carousel-prev { left: 80px; }
+    .design-circle .carousel-next {right: 80px; }
+
     h2.card-header {font-size: 1.25rem; }
     .card-header h3 {font-size: 1.5rem; }
 
+    .contacts h2 {font-size: 2rem; }
     .footer {padding: 2rem 80px 20px;}
 }
 
@@ -551,6 +558,8 @@ h3 {
     .hero-title {font-size: 3rem; }
     .hero-subtitle {font-size: 2rem; }
     .hero-text {font-size: 1.25rem; }
+
+    .circle-mask {width: 620px; height: 620px; }
 
     h2.card-header {font-size: 1rem; }
     .card-header h3 {font-size: 1.25rem; }
