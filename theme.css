@@ -185,6 +185,94 @@ h3 {
     min-height: 80vh;
 }
 
+.img-composition {
+    position: relative;
+    width: 350px;
+    height: 570px;
+}
+
+.art-set {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.art-set.active {
+    opacity: 1;
+}
+
+.art-item {
+    position: absolute;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: opacity 0.6s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.art-set.active .art-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Позиционирование элементов композиции */
+.art-1 {
+    width: 171px;
+    height: 171px;
+    left: 35px;
+    top: 0;
+    z-index: 2;
+    transition-delay: 0s;
+}
+
+.art-2 {
+    width: 185px;
+    height: 247px;
+    left: 159px;
+    top: 56px;
+    z-index: 1;
+    transition-delay: 0.12s;
+}
+
+.art-3h {
+    width: 195px;
+    height: 130px;
+    left: 0;
+    top: 220px;
+    z-index: 2;
+    transition-delay: 0.24s;
+}
+
+.art-3v {
+    width: 142px;
+    height: 189px;
+    left: 0;
+    top: 196px;
+    z-index: 2;
+    transition-delay: 0.24s;
+}
+
+.art-4 {
+    width: 150px;
+    height: 196px;
+    left: 220px;
+    top: 335px;
+    z-index: 1;
+    transition-delay: 0.36s;
+}
+
+.art-5 {
+    width: 133px;
+    height: 191px;
+    left: 29px;
+    top: 366px;
+    z-index: 1;
+    transition-delay: 0.48s;
+}
+
+.hero-description {
+    max-width: 45%;
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -208,10 +296,6 @@ h3 {
     60% {
         transform: translateY(-5px);
     }
-}
-
-.hero-description {
-    max-width: 45%;
 }
 
 /* Творчество */
@@ -238,8 +322,6 @@ h3 {
 }
 
 .circle-mask img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -247,10 +329,6 @@ h3 {
 /* Карусель работ (максимум 10) */
 .carousel-slide {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     opacity: 0;
     transition: opacity 0.5s ease;
     border-radius: 50%;
@@ -429,7 +507,7 @@ h3 {
 }
 
 .footer-section a:hover {
-    color: var(--accent-color);
+    color: #8843D6;
 }
 
 /* Responsive Grid */
@@ -437,6 +515,16 @@ h3 {
 
 @media (max-width: 767.98px) {
     .container {max-width: 100% !important; }
+    .container:not(header) {padding-left: 20px; padding-right: 20px; }
+
+    .hero-subtitle {display: flex; justify-content: center; }
+    .hero-title {display: flex; justify-content: center; }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .hero-shot {height: 125vh; position: relative; }
+    .img-composition {margin: 30px 0;}
+    .scroll-indicator {bottom: 30px; }
 }
 
 /* xs <576px */

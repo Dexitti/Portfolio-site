@@ -87,6 +87,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Композиция profile images
+const composition = document.querySelector('.img-composition');
+if (composition && composition.offsetParent !== null) {
+    const artSets = composition.querySelectorAll('.art-set');
+    let currentIndex = 0;
+    
+    function showArtSet(index) {
+        artSets.forEach((set, i) => {
+            set.classList.toggle('active', i === index);
+        });
+    }
+    
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % artSets.length;
+        showArtSet(currentIndex);
+    }, 5000);
+
+    showArtSet(0); // Первая default
+}
+
 // Карусель изображений
 document.querySelectorAll('.circle-mask').forEach(container => {
     const slides = container.querySelectorAll('.carousel-slide');
