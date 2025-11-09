@@ -280,18 +280,10 @@ h3 {
 .carousel-prev:hover, .carousel-next:hover {
     background: rgba(0,0,0,0.8);
 }
-
-.drawing-circle {
-    border: 12px solid var(--accent-color);
-    transform: translateX(-95px);
-}
-.design-circle {
-    border: 12px solid var(--secondary-color);
-}
-.modeling-circle {
-    border: 12px solid var(--tertiary-color);
-    transform: translateX(-95px);
-}
+/* С md (>768) круги *залазят под container */
+.drawing-circle {border: 12px solid var(--accent-color); }
+.design-circle {border: 12px solid var(--secondary-color);}
+.modeling-circle {border: 12px solid var(--tertiary-color); }
 
 .wave-line {
     position: absolute;
@@ -464,9 +456,11 @@ h3 {
     .hero-subtitle {font-size: 1.3rem; }
     .section-title {font-size: 2rem; }
 
-    .circle-mask {width: calc(350px + 12vw); height: calc(350px + 12vw); } /* !!! */
+    .circle-mask {width: calc(240px + 28vw); height: calc(240px + 28vw); }
     .carousel-prev { left: 10px; }
     .carousel-next { right: 10px; }
+    .art-categories h2 {margin-top: 1rem; }
+    .art-categories p {margin-bottom: 1.5rem; }
 
     h2.card-header {font-size: 1.1rem; }
     .card-header h3 {font-size: 1.145rem; }
@@ -489,6 +483,10 @@ h3 {
     .hero-subtitle {font-size: 2rem; }
     .hero-text {font-size: 1.25rem; }
 
+    .circle-mask {width: calc(155px + 29vw); height: calc(155px + 29vw); }
+    .art-categories h2 {margin-top: 0; }
+    .art-categories p {margin-bottom: 0.5rem; }
+
     h2.card-header {font-size: 1.125rem; }
     .card-header h3 {font-size: 1.375rem; }
 }
@@ -510,7 +508,10 @@ h3 {
 
     .section-title {font-size: 2.5rem; }
     .circle-mask {width: calc(350px + 12vw); height: calc(350px + 12vw); }
+    .drawing-circle {transform: translateX(-95px); }
+    .modeling-circle {transform: translateX(-95px); }
     .carousel-prev { left: 80px; }
+    .design-circle .carousel-prev { left: 10px; }
     .design-circle .carousel-next {right: calc(80px * 12.9%); }
 
     .footer {padding: 2rem 60px 20px;}
