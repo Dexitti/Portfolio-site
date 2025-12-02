@@ -1,3 +1,42 @@
+/* Подгрузка шрифтов (5: gadugi:bold,regular, montserrat:semibold,bold, gagalin:regular) */
+@font-face {
+	font-family: 'Gagalin';
+	src: url('../fonts/Gagalin-Regular.eot');
+	src: local('Gagalin Regular'), local('Gagalin-Regular'),
+		url('Gagalin-Regular.eot?#iefix') format('embedded-opentype'),
+		url('Gagalin-Regular.woff') format('woff'),
+		url('Gagalin-Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('Montserrat-Bold.eot');
+    src: local('Montserrat Bold'), local('Montserrat-Bold'),
+        url('Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Montserrat-Bold.woff2') format('woff2'),
+        url('Montserrat-Bold.woff') format('woff'),
+        url('Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('Montserrat-SemiBold.eot');
+    src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'),
+        url('Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Montserrat-SemiBold.woff2') format('woff2'),
+        url('Montserrat-SemiBold.woff') format('woff'),
+        url('Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* CSS переменные цветов и шрифтов */
 :root {
     --bg: #121212;
@@ -179,7 +218,6 @@ h3 {
 
 /* Главный экран */
 .hero-shot {
-    height: 100vh;
     padding: 30px 12px;
 }
 
@@ -275,13 +313,7 @@ h3 {
     max-width: 45%;
 }
 
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite;
-}
+.scroll-indicator {animation: bounce 2s infinite; }
 
 .scroll-indicator i {
     font-size: 2rem;
@@ -314,6 +346,7 @@ h3 {
 .circle-mask {
     width: 620px;
     height: 620px;
+    aspect-ratio: 1;
     border-radius: 50%;
     background: var(--bg-header);
     position: relative; /* для карусели */
@@ -528,9 +561,7 @@ h3 {
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .hero-shot {height: 125vh; position: relative; }
-    .img-composition {margin: 30px 0;}
-    .scroll-indicator {bottom: 30px; }
+    .img-composition {margin: 30px 0; }
 }
 
 /* xs <576px */
@@ -543,14 +574,16 @@ h3 {
     .nav-link {
         height: 52px;
         padding: 1px 8px;
-        font-size: 0.85rem;
+        font-size: clamp(0.8rem, calc(0.8rem + 0.4rem * (100vw - 375px) / 201px), 1rem);
     }
 
+    .hero-shot {height: auto; }
     .hero-description {max-width: 100%; }
     .hero-subtitle {font-size: 1.3rem; }
-    .section-title {font-size: 2rem; }
+    .scroll-indicator {margin-top: 20px; text-align: center; }
 
-    .circle-mask {width: calc(240px + 28vw); height: calc(240px + 28vw); }
+    .section-title {font-size: 2rem; }
+    .circle-mask {width: calc(210px + 28.6vw); height: calc(210px + 28.6vw); }
     .carousel-prev { left: 10px; }
     .carousel-next { right: 10px; }
     .art-categories h2 {margin-top: 1rem; }
@@ -624,11 +657,17 @@ h3 {
     .nav-link.home {border-radius: 10px 10px 10px 50px; }
     .nav-link.contacts {border-radius: 10px 10px 50px 10px; }
 
+    .hero-shot {height: 100vh; }
     .hero-description {max-width: 50%; }
     .hero-title {font-size: 2.3rem; }
     .hero-subtitle {font-size: 1.6rem; }
     .hero-text {font-size: 1rem; }
-
+    .scroll-indicator {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .carousel-prev { left: 80px; }
     .design-circle .carousel-next {right: 80px; }
 
