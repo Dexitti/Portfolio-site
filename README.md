@@ -1,6 +1,8 @@
 # Portfolio-site
 My personal web-page
 
+You can find it in your browser or site is available at http://dexitti.site for short
+
 ### Preview
 
 
