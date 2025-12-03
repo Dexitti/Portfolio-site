@@ -1,0 +1,8 @@
+User-agent: *
+Crawl-delay: 1
+Host: dexitti.site
+Disallow: /resourses/
+Disallow: /fonts/
+Disallow: /theme.css
+Disallow: /func.js
+Sitemap: http://dexitti.site/sitemap.xml
